@@ -1,6 +1,6 @@
 {
   "name": "dotenv-parser",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Extenstion of dotenv library which able to parse JS object, interger, array and boolean.",
   "main": "build/index.js",
   "files": [
@@ -38,5 +38,14 @@
     "testWithCoverage": "jest --coverage",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test"
-  }
+  },
+  "keywords": [
+    "dotenv",
+    "env",
+    ".env",
+    "environment",
+    "variables",
+    "config",
+    "settings"
+  ]
 }
