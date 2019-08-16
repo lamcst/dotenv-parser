@@ -1,6 +1,6 @@
 {
   "name": "dotenv-parser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Extenstion of dotenv library which able to parse JS object, interger, array and boolean.",
   "main": "build/index.js",
   "files": [
@@ -24,21 +24,19 @@
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
+    "sinon": "^7.4.1",
     "ts-jest": "^24.0.2",
     "ts-node": "8.3.0",
-    "typescript": "3.5.3",
-    "sinon": "^7.4.1"
+    "typescript": "3.5.3"
   },
   "dependencies": {
-    "dotenv": "^8.0.0",
-    "lodash": "^4.17.15"
+    "dotenv": "^8.0.0"
   },
   "scripts": {
     "build": "tsc",
     "test": "jest",
     "testWithCoverage": "jest --coverage",
-    "prepare":"yarn build",
+    "prepare": "yarn build",
     "prepublishOnly": "yarn test"
   }
-  
 }

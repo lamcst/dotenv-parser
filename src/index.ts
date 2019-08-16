@@ -1,6 +1,37 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { config as dotenvConfig, DotenvConfigOutput, DotenvConfigOptions } from 'dotenv';
-import { compact, isString } from 'lodash';
 const ENV_ARRAY_SEPARATOR = '|';
+function compact(array: string[]): Array<string> {
+  let resIndex = 0;
+  const result = [];
+
+  if (array == null) {
+    return result;
+  }
+
+  for (const value of array) {
+    if (value) {
+      result[resIndex++] = value;
+    }
+  }
+  return result;
+}
+const toString = Object.prototype.toString;
+
+function getTag(value: any): string {
+  if (value == null) {
+    return value === undefined ? '[object Undefined]' : '[object Null]';
+  }
+  return toString.call(value);
+}
+function isString(value: any): boolean {
+  const type = typeof value;
+  return (
+    type == 'string' ||
+    (type == 'object' && value != null && !Array.isArray(value) && getTag(value) == '[object String]')
+  );
+}
+
 export interface DotenvParserConfigOptions extends DotenvConfigOptions {
   separator?: string;
 }
