@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add @type/sinon --dev
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js publish
 
 PATH: 
-  C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;%NVM_HOME%;%NVM_SYMLINK%;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Users\andy.mk.lam\AppData\Local\Microsoft\WindowsApps;C:\Users\andy.mk.lam\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\andy.mk.lam\AppData\Roaming\nvm;C:\Program Files\nodejs
+  C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;%NVM_HOME%;%NVM_SYMLINK%;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\andy.mk.lam\AppData\Local\Microsoft\WindowsApps;C:\Users\andy.mk.lam\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\andy.mk.lam\AppData\Roaming\nvm;C:\Program Files\nodejs
 
 Yarn version: 
   1.17.3
@@ -14,24 +14,27 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@type%2fsinon: Not found
-      at Request.params.callback [as _callback] (C:\Users\andy.mk.lam\AppData\Roaming\nvm\v10.16.1\node_modules\yarn\lib\cli.js:66830:18)
-      at Request.self.callback (C:\Users\andy.mk.lam\AppData\Roaming\nvm\v10.16.1\node_modules\yarn\lib\cli.js:140464:22)
-      at Request.emit (events.js:198:13)
-      at Request.<anonymous> (C:\Users\andy.mk.lam\AppData\Roaming\nvm\v10.16.1\node_modules\yarn\lib\cli.js:141436:10)
-      at Request.emit (events.js:198:13)
-      at IncomingMessage.<anonymous> (C:\Users\andy.mk.lam\AppData\Roaming\nvm\v10.16.1\node_modules\yarn\lib\cli.js:141358:12)
-      at Object.onceWrapper (events.js:286:20)
-      at IncomingMessage.emit (events.js:203:15)
-      at endReadableNT (_stream_readable.js:1145:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\andy.mk.lam\AppData\Roaming\nvm\v10.16.1\node_modules\yarn\lib\cli.js:136724:13)
+      at Interface.emit (events.js:198:13)
+      at Interface._ttyWrite (readline.js:801:16)
+      at ReadStream.onkeypress (readline.js:184:10)
+      at ReadStream.emit (events.js:198:13)
+      at emitKeys (internal/readline.js:424:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1075:36)
+      at ReadStream.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
 
 npm manifest: 
   {
     "name": "dotenv-parser",
-    "version": "0.0.1",
+    "version": "0.0.5",
     "description": "Extenstion of dotenv library which able to parse JS object, interger, array and boolean.",
-    "main": "src/index.ts",
+    "main": "build/index.js",
+    "files": [
+      "build/**/*"
+    ],
     "repository": "https://github.com/lamcst/dotenv-parser.git",
     "author": "Andy Lam",
     "license": "MIT",
@@ -42,6 +45,7 @@ npm manifest:
       "@types/jest": "^24.0.17",
       "@types/lodash": "^4.14.136",
       "@types/node": "^8.0.29",
+      "@types/sinon": "^7.0.13",
       "@typescript-eslint/eslint-plugin": "^2.0.0",
       "@typescript-eslint/parser": "^2.0.0",
       "eslint": "^6.1.0",
@@ -49,20 +53,30 @@ npm manifest:
       "eslint-plugin-prettier": "^3.1.0",
       "jest": "^24.8.0",
       "prettier": "^1.18.2",
+      "sinon": "^7.4.1",
       "ts-jest": "^24.0.2",
       "ts-node": "8.3.0",
       "typescript": "3.5.3"
     },
     "dependencies": {
-      "dotenv": "^8.0.0",
-      "lodash": "^4.17.15",
-      "sinon": "^7.4.1"
+      "dotenv": "^8.0.0"
     },
     "scripts": {
       "build": "tsc",
       "test": "jest",
-      "testWithCoverage": "jest --coverage"
-    }
+      "testWithCoverage": "jest --coverage",
+      "prepare": "yarn build",
+      "prepublishOnly": "yarn test"
+    },
+    "keywords": [
+      "dotenv",
+      "env",
+      ".env",
+      "environment",
+      "variables",
+      "config",
+      "settings"
+    ]
   }
 
 yarn manifest: 
@@ -531,6 +545,11 @@ Lockfile:
     dependencies:
       "@types/express-serve-static-core" "*"
       "@types/mime" "*"
+  
+  "@types/sinon@^7.0.13":
+    version "7.0.13"
+    resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-7.0.13.tgz#ca039c23a9e27ebea53e0901ef928ea2a1a6d313"
+    integrity sha512-d7c/C/+H/knZ3L8/cxhicHUiTDxdgap0b/aNJfsmLwFu/iOP17mdgbQsbHA3SJmrzsjD0l3UEE5SN4xxuz5ung==
   
   "@types/stack-utils@^1.0.1":
     version "1.0.1"
